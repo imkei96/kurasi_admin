@@ -31,13 +31,7 @@
   <p><strong>Link:</strong>
     {% for x in link %}
           {{ x.link|join:" , " }}
-        {% endfor %}</p>
-  <form action="{% url 'accept' uid %}" method="post" >
-    {% csrf_token %}
-    <button type="submit" class="btn">
-        Accept
-    </button>
-  </form> 
-  <p><a href="{% url 'data'%}">Back</a></p>
+        {% endfor %}</p>     
+  <p><a href="{% url 'data_curated' %}">Back</a></p>
 
 {% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Curated Data List</h1>
+  {% if dbm_List %}
+  <ol>
+    {% for data in uid_list %}
+      <li>
+        <p> Data no : <a href="{{ data.get_absolute_url_curated }}">{{ data.uid }}</a></p>
+        {% for nama in data.nama %}
+          Nama : {{ nama.nama }} <br>
+        {% endfor %}
+
+        {% for email in data.email %}
+          Email : {{ email.email }} <br>
+        {% endfor %}
+      </li>
+    <br>
+    {% endfor %}
+  </ol>
+
+  {% else %}
+    <p>There are no data in the database.</p>
+  {% endif %}
+{% endblock %}

@@ -20,7 +20,8 @@ class ID(StructuredNode):
     def get_absolute_url(self):
         """Returns the url to access a detail record for this book."""
         return reverse('link-uid', args=[str(self.uid)])
-
+    def get_absolute_url_curated(self):
+        return reverse('uid-curated', args=[str(self.uid)])
 class Nama(StructuredNode):
     nama = StringProperty(unique_index=True)
 
