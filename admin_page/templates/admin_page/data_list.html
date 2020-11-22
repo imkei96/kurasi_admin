@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Data List</h1>
+  {% if object_list %}
+  <ul>
+    {% for data in object_list %}
+      <li>
+        <a href="{{ data.get_absolute_url }}">{{ data.judul }}</a> ({{data.kelas}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no data in the database.</p>
+  {% endif %}       
+{% endblock %}

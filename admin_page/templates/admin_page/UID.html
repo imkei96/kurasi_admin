@@ -1,0 +1,38 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>UID: {{ uid }}</h1>
+
+  <p><strong>Nama:</strong>
+    {% for x in nama %}
+      {{ x.nama }}
+    {% endfor %}</p>
+
+  <p><strong>Email:</strong>
+    {% for x in email %}
+      {{ x.email }}
+    {% endfor %}</p>
+  <p><strong>Judul:</strong>
+      {% for x in judul %}
+        {{ x.judul }}
+      {% endfor %}</p>
+  <p><strong>Kelas:</strong>
+    {% for x in kelas %}
+          {{ x.kelas }}
+        {% endfor %}</p>
+  <p><strong>Pelajaran:</strong>
+    {% for x in pelajaran %}
+          {{ x.pelajaran }}
+        {% endfor %}</p>
+  <p><strong>Kategori:</strong>
+    {% for x in kategori %}
+          {{ x.kategori }}
+        {% endfor %}</p>
+  <p><strong>Link:</strong>
+    {% for x in link %}
+          {{ x.link|join:" , " }}
+        {% endfor %}</p>
+
+  <p><a href="{% url 'data'%}">Back</a></p>
+
+{% endblock %}

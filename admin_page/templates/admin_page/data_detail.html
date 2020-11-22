@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Judul: {{ data.judul }}</h1>
+
+  <p><strong>User:</strong> <a href="">{{ data.user }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Email:</strong> {{ data.email }}</p>
+  <p><strong>Kelas:</strong> {{ data.kelas }}</p>
+  <p><strong>Pelajaran:</strong> {{ data.pelajaran }}</p>
+  <p><strong>Kategori:</strong> {{ data.kategori.all|join:", " }}</p>
+  <p><strong>Link:</strong> {{ data.link }}</p>
+
+{% endblock %}
