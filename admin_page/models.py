@@ -1,7 +1,8 @@
 from django.urls import reverse
 from neomodel import (config, StructuredNode, StringProperty, UniqueIdProperty, ArrayProperty,RelationshipTo)
 
-config.DATABASE_URL = 'bolt://neo4j:admin@localhost:7687'
+# config.DATABASE_URL = 'bolt://neo4j:admin@localhost:7687'
+config.DATABASE_URL = 'neo4j://proglan:kelas2020@103.89.6.76:7778'
 
 class DBM(StructuredNode):
     site = StringProperty(unique_index=True, required=True)

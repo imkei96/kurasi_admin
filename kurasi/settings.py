@@ -13,8 +13,8 @@ import os
 from pathlib import Path
 
 from neomodel import config
-
-config.DATABASE_URL = 'bolt://admin:admin@localhost:7687'
+config.DATABASE_URL = 'neo4j://testing:testing@54.90.85.230:7687'
+#config.DATABASE_URL = 'bolt://admin:admin@localhost:7687'
 config.MAX_POOL_SIZE = 50
 NEOMODEL_SIGNALS = True
 NEOMODEL_FORCE_TIMEZONE = False

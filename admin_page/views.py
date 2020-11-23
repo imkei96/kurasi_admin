@@ -8,7 +8,8 @@ from django.contrib.auth.decorators import login_required
 from .utils import change_parents, writetolog, readlog
 from .models import DBM, ID, Nama, Email, Judul, Kelas, Pelajaran, Kategori, Link
 
-config.DATABASE_URL = 'bolt://neo4j:admin@localhost:7687'
+# config.DATABASE_URL = 'bolt://neo4j:admin@localhost:7687'
+config.DATABASE_URL = 'neo4j://proglan:kelas2020@103.89.6.76:7778'
 time = datetime.datetime.now()
 
 def get_base_context(context):
@@ -159,5 +160,5 @@ def historylog(request):
     }
     get_base_context(context)
     # log = readlog()
-    print('log: ',context['log'])
+    # print('log: ',context['log'])
     return render(request, 'admin_page/historylog.html',context=context)

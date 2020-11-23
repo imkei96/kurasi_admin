@@ -3,8 +3,8 @@ from .models import DBM, ID, Nama, Email, Judul, Kelas, Pelajaran, Kategori, Lin
 
 from datetime import datetime
 import json
-config.DATABASE_URL = 'bolt://neo4j:admin@localhost:7687'
-
+# config.DATABASE_URL = 'bolt://neo4j:admin@localhost:7687'
+config.DATABASE_URL = 'neo4j://proglan:kelas2020@103.89.6.76:7778'
 
 def filter_nodes(node_type, search_text):
     node_set = node_type.nodes
