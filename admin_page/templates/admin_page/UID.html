@@ -1,8 +1,9 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+  <h2>Kurator name: {{user}} </h2>
   <h1>UID: {{ uid }}</h1>
-
+  
   <p><strong>Nama:</strong>
     {% for x in nama %}
       {{ x.nama }}
@@ -32,7 +33,7 @@
     {% for x in link %}
           {{ x.link|join:" , " }}
         {% endfor %}</p>
-  <form action="{% url 'accept' uid %}" method="post" >
+  <form action="{% url 'accept' uid user %}" method="post" >
     {% csrf_token %}
     <button type="submit" class="btn">
         Accept

@@ -5,7 +5,7 @@ from django.views import generic
 from neomodel import config
 from django.contrib.auth.decorators import login_required
 
-from .utils import change_parents
+from .utils import change_parents, writetolog, readlog
 from .models import DBM, ID, Nama, Email, Judul, Kelas, Pelajaran, Kategori, Link
 
 config.DATABASE_URL = 'bolt://neo4j:admin@localhost:7687'
@@ -122,7 +122,8 @@ def curated_detail(request, uid):
     return render(request, 'admin_page/UID_curated.html', context=context)
 
 @login_required
-def accept(request, uid):
+def accept(request, uid, user):
+    writetolog(uid,user)
     change_parents(uid)
     
     # Generate counts of some of the main objects
@@ -150,3 +151,13 @@ def accept(request, uid):
     get_base_context(context)
 
     return render(request, 'index.html', context=context)
+
+@login_required
+def historylog(request):
+    context = {
+        'log' : readlog()
+    }
+    get_base_context(context)
+    # log = readlog()
+    print('log: ',context['log'])
+    return render(request, 'admin_page/historylog.html',context=context)

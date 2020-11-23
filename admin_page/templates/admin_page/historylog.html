@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>History Log</h1>
+  <div class="container">
+    
+    <ol class="container">
+      {% for p in log %}
+      <li>
+        <p>Kurator : {{ p.kurator }}</p>
+        <p>Waktu : {{ p.timestamp}}</p>
+        <p>UID: {{p.uid}}</p>
+        <p>Action: {{p.action}}</p>
+      </li>
+      {% endfor %}
+    </ol>
+    
+  </div>
+  
+
+{% endblock %}

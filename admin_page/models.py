@@ -42,7 +42,28 @@ class Kategori(StructuredNode):
 
 class Link(StructuredNode):
     link = ArrayProperty(unique_index=True)
+# class datalog(StructuredNode):
+#     uid = StringProperty
+#     nama = StringProperty
+#     email = StringProperty
+#     judul = StringProperty
+#     kelas = StringProperty
+#     pelajaran = StringProperty
+#     kategori = StringProperty
+#     link = StringProperty
+# class Log(StructuredNode):
+#     logtitle = StringProperty(unique_index=True)
+#     kuratorname = StringProperty()
 
+#     connect_log = RelationshipTo()
+
+
+
+# log = DBM(site = 'Log').save()
+
+
+# kurator = ''
+# kurator = 
 
 """
 # Create Database Master

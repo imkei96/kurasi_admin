@@ -1,6 +1,8 @@
 from neomodel import db, config
 from .models import DBM, ID, Nama, Email, Judul, Kelas, Pelajaran, Kategori, Link
 
+from datetime import datetime
+import json
 config.DATABASE_URL = 'bolt://neo4j:admin@localhost:7687'
 
 
@@ -35,6 +37,7 @@ def change_parents(idunik):
     
     dbnc = DBM.nodes.get(site="NonCurated")
     dbc = DBM.nodes.get(site="Curated")
+
     list_nc = dbnc.uid.all()
     list_c = dbc.uid.all()
     
@@ -44,10 +47,39 @@ def change_parents(idunik):
     for x in ID.nodes:
         if x.uid == idunik:
             print(x)
-            dbc.uid.connect(x)    
+            dbc.uid.connect(x)  
+
     
 # change_parents('7b6372d9f3ac407f96d872dc1350eeca')
 
+
+def writetolog(uid,kurator):
+    writedate = datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%f')
+
+    with open('./admin_page/log.json') as json_file: 
+        data = json.load(json_file) 
+        
+        temp = data['log'] 
+        y = {"kurator":kurator, 
+            "timestamp" : writedate,
+            "uid": uid, 
+            "action": "Accept"
+            } 
+        temp.append(y) 
+    with open('./admin_page/log.json','w') as f: 
+        json.dump(data, f, indent=4) 
+    
+def readlog():
+    with open('./admin_page/log.json') as json_file:
+        data = json.load(json_file)
+        # for p in data['log']:
+        #     print('kurator: ' + p['kurator'])
+        #     print('timestamp: ' + p['timestamp'])
+        #     print('uid: ' + p['uid'])
+        #     print('action: ' + p['action'])
+        #     print('') 
+    return data['log']
+# print(readlog())
 def fetch_NonCurated():
     nodelist = []
     nodes = db.cypher_query(

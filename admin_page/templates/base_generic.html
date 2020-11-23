@@ -24,10 +24,13 @@
           <li class="nav-item" ><a class="nav-link active" href="{% url 'index' %}">Home</a></li>
         </ul>
         <ul class="nav nav-sidebar">
-          <li class="nav-item" ><a class="nav-link active" href=" {% url 'data' %} ">All data</a></li>
+          <li class="nav-item" ><a class="nav-link active" href=" {% url 'data' %} ">Non Curated</a></li>
         </ul>        
         <ul class="nav nav-sidebar">
           <li class="nav-item" ><a class="nav-link active" href=" {% url 'data_curated' %} ">Curated</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li class="nav-item" ><a class="nav-link active" href=" {% url 'historylog' %} ">Log</a></li>
         </ul>
         {% if user.is_authenticated %}
         <ul class="nav nav-sidebar">  
@@ -37,7 +40,6 @@
         <ul class="nav nav-sidebar">
           <li class="nav-item" ><a class="nav-link active" href=" {% url 'register' %} ">Register</a></li>
         </ul>
-        
         <ul class="nav nav-sidebar">
           <li class="nav-item" ><a class="nav-link active" href=" {% url 'login' %} ">Login</a></li>
         </ul>
