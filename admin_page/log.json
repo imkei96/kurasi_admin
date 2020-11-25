@@ -29,6 +29,12 @@
             "timestamp": "2020-11-24T03:11:31.467277",
             "uid": "b32001f8c4a740bc9f073877046e7cdd",
             "action": "Accept"
+        },
+        {
+            "kurator": "kevintest",
+            "timestamp": "2020-11-24T03:56:13.499162",
+            "uid": "f432240433d14fa0a9aa12f99fabbf6b",
+            "action": "Accept"
         }
     ]
 }

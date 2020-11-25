@@ -1,6 +1,6 @@
 import datetime
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from neomodel import config
 from django.contrib.auth.decorators import login_required
@@ -8,8 +8,8 @@ from django.contrib.auth.decorators import login_required
 from .utils import change_parents, writetolog, readlog
 from .models import DBM, ID, Nama, Email, Judul, Kelas, Pelajaran, Kategori, Link
 
-# config.DATABASE_URL = 'bolt://neo4j:admin@localhost:7687'
-config.DATABASE_URL = 'neo4j://proglan:kelas2020@103.89.6.76:7778'
+# config.DATABASE_URL = 'bolt://neo4j:admin@localhost:7687' #localhost
+config.DATABASE_URL = 'neo4j://proglan:kelas2020@103.89.6.76:7778' #proglan (bukan testing)
 time = datetime.datetime.now()
 
 def get_base_context(context):
@@ -124,34 +124,11 @@ def curated_detail(request, uid):
 
 @login_required
 def accept(request, uid, user):
-    writetolog(uid,user)
-    change_parents(uid)
+    if request.method == 'POST':
+        writetolog(uid,user)
+        change_parents(uid)
     
-    # Generate counts of some of the main objects
-    num_data = len(DBM.nodes.all())
-    num_uid = len(ID.nodes.all())
-    num_nama = len(Nama.nodes.all())
-    num_email = len(Email.nodes.all())
-    num_judul = len(Judul.nodes.all())
-    num_kelas = len(Kelas.nodes.all())
-    num_pelajaran = len(Pelajaran.nodes.all())
-    num_kategori = len(Kategori.nodes.all())
-    num_link = len(Link.nodes.all())
-
-    context = {
-        'num_data': num_data,
-        'num_uid': num_uid,
-        'num_nama': num_nama,
-        'num_email': num_email,
-        'num_judul': num_judul,
-        'num_kelas': num_kelas,
-        'num_pelajaran': num_pelajaran,
-        'num_kategori': num_kategori,
-        'num_link': num_link
-    }
-    get_base_context(context)
-
-    return render(request, 'index.html', context=context)
+    return redirect('index')
 
 @login_required
 def historylog(request):
