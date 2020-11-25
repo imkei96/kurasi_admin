@@ -8,8 +8,6 @@ from django.contrib.auth.decorators import login_required
 from .utils import change_parents, writetolog, readlog
 from .models import DBM, ID, Nama, Email, Judul, Kelas, Pelajaran, Kategori, Link
 
-# config.DATABASE_URL = 'bolt://neo4j:admin@localhost:7687' #localhost
-config.DATABASE_URL = 'neo4j://proglan:kelas2020@103.89.6.76:7778' #proglan (bukan testing)
 time = datetime.datetime.now()
 
 def get_base_context(context):
