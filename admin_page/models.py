@@ -40,6 +40,7 @@ class Kategori(StructuredNode):
 
 class Link(StructuredNode):
     link = ArrayProperty(unique_index=True)
+
 # class datalog(StructuredNode):
 #     uid = StringProperty
 #     nama = StringProperty

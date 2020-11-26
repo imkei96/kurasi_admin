@@ -4,9 +4,11 @@ from django.shortcuts import render, redirect
 from django.views import generic
 from neomodel import config
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
-from .utils import change_parents, writetolog, readlog
+from .utils import change_parents, writetolog, readlog, update_database
 from .models import DBM, ID, Nama, Email, Judul, Kelas, Pelajaran, Kategori, Link
+from .forms import UpdateDataForm
 
 time = datetime.datetime.now()
 
@@ -82,6 +84,44 @@ def get_detail(request, uid):
 
     return render(request, 'admin_page/UID.html', context=context)
 
+@login_required
+def edit_detail(request, user, uid):
+    data = ID.nodes.get(uid=uid)
+    nama = data.nama.all()[0]
+    email = data.email.all()[0]
+    judul = data.judul.all()[0]
+    kelas = data.kelas.all()[0]
+    pelajaran = data.pelajaran.all()[0]
+    kategori = data.kategori.all()[0]
+    link = data.link.all()[0]
+
+    if request.method == 'POST':
+        form = UpdateDataForm(request.POST)
+        if form.is_valid():
+            form_data = form.cleaned_data
+            update_database(uid,form_data)
+            messages.success(request, f'Data Edited for UID {uid}!')
+            action = "Edit"
+            writetolog(uid, user, action)
+            return redirect('index')
+    else:
+        form = UpdateDataForm(initial=
+                              {'nama':nama.nama,
+                               'email':email.email,
+                               'judul':judul.judul,
+                               'kelas':kelas.kelas,
+                               'pelajaran':pelajaran.pelajaran,
+                               'kategori':kategori.kategori,
+                               'link':link.link})
+
+    context = {
+        'form':form,
+        'uid':uid,
+    }
+    get_base_context(context)
+
+    return render(request, 'admin_page/edit_form.html',context=context)
+
 
 @login_required
 def curated_list(request):
@@ -121,10 +161,12 @@ def curated_detail(request, uid):
     return render(request, 'admin_page/UID_curated.html', context=context)
 
 @login_required
-def accept(request, uid, user):
+def accept(request, user, uid):
     if request.method == 'POST':
-        writetolog(uid,user)
+        action = "Accept"
+        writetolog(uid,user,action)
         change_parents(uid)
+        messages.success(request, f'Data Accepted for UID {uid}!')
     
     return redirect('index')
 

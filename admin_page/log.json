@@ -35,6 +35,36 @@
             "timestamp": "2020-11-24T03:56:13.499162",
             "uid": "f432240433d14fa0a9aa12f99fabbf6b",
             "action": "Accept"
+        },
+        {
+            "kurator": "kevintest",
+            "timestamp": "2020-11-25T05:06:41.857121",
+            "uid": "5d784636b9d64eed977f91257c228469",
+            "action": "Accept"
+        },
+        {
+            "kurator": "kevintest",
+            "timestamp": "2020-11-25T05:09:22.844460",
+            "uid": "d60dbb4e5b27434f8a6fa9896e988ecf",
+            "action": "Accept"
+        },
+        {
+            "kurator": "kevintest",
+            "timestamp": "2020-11-25T11:06:57.358439",
+            "uid": "7b451965b94e48c2af64ce5690428dda",
+            "action": "Accept"
+        },
+        {
+            "kurator": "kevintest",
+            "timestamp": "2020-11-26T10:28:22.407804",
+            "uid": "a2b23b5d6a784eb884ddcaaf2ca18f50",
+            "action": "Edit"
+        },
+        {
+            "kurator": "kevintest",
+            "timestamp": "2020-11-26T10:30:58.619248",
+            "uid": "a2b23b5d6a784eb884ddcaaf2ca18f50",
+            "action": "Accept"
         }
     ]
 }
