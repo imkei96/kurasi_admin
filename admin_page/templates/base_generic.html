@@ -11,57 +11,64 @@
 
 </head>
 <body>
-  <div class="jumbotron">
-    <div class="row jumbotron">
-      <div class="col-sm-2">
+  <div class="jumbotron text-center" id="header">
+    <h1>Kurasi Home</h1>
+    <p>Anda adalah harapan bangsa, untuk mengumpulkan segala sumber belajar yang bebas biaya dan terbuka</p>
+  </div>
+    
+  <div class="container">
+    <div class="row">
       {% block sidebar %}
-      {% if user.is_authenticated %}
-      <ul class="nav nav-sidebar">
-        <li class="nav-item">Welcome, {{ user }}!</li>
-      </ul>
-      {% endif %}      
-        <ul class="nav nav-sidebar">
-          <li class="nav-item" ><a class="nav-link active" href="{% url 'index' %}">Home</a></li>
+      <div class="col-sm-2">
+        <!-- Nav pills -->
+
+        <ul class="nav flex-column nav-pills" role="tablist">
+          
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="name" data-toggle="pill" >Welcome, {{ user }}!</a>
+          </li>          
+          {% endif %}                          
+          <li class="nav-item">
+            <a class="nav-link " data-toggle="pill" href="{% url 'index' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " data-toggle="pill" href=" {% url 'data' %} ">Non Curated</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href=" {% url 'data_curated' %} ">Curated</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href=" {% url 'historylog' %} ">Log</a>
+          </li>          
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href=" {% url 'logout' %} ">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href=" {% url 'register' %} ">Register</a>
+          </li>                    
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href=" {% url 'login' %} ">Login</a>
+          </li>          
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#menu2">Time Now:</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#menu2">{{time}}</a>
+          </li>                    
         </ul>
-        <ul class="nav nav-sidebar">
-          <li class="nav-item" ><a class="nav-link active" href=" {% url 'data' %} ">Non Curated</a></li>
-        </ul>        
-        <ul class="nav nav-sidebar">
-          <li class="nav-item" ><a class="nav-link active" href=" {% url 'data_curated' %} ">Curated</a></li>
-        </ul>
-        <ul class="nav nav-sidebar">
-          <li class="nav-item" ><a class="nav-link active" href=" {% url 'historylog' %} ">Log</a></li>
-        </ul>
-        {% if user.is_authenticated %}
-        <ul class="nav nav-sidebar">  
-          <li class="nav-item" ><a class="nav-link active" href=" {% url 'logout' %} ">Logout</a></li>
-        </ul>
-        {% else %}
-        <ul class="nav nav-sidebar">
-          <li class="nav-item" ><a class="nav-link active" href=" {% url 'register' %} ">Register</a></li>
-        </ul>
-        <ul class="nav nav-sidebar">
-          <li class="nav-item" ><a class="nav-link active" href=" {% url 'login' %} ">Login</a></li>
-        </ul>
-        {% endif %}
-        <ul class="nav nav-sidebar">      
-          <li class="nav-item">Time Now :</li>
-        </ul>          
-        <ul class="nav nav-sidebar">
-          <li class="nav-item">{{time}}</li>
-        </ul>
-     {% endblock %}
       </div>
-      <div class="container">
-        {% if messages %}
-          {% for message in messages %}
-            <div class="alert alert-{{ message.tags}}">
-              {{ message }}
-            </div>
-          {% endfor %}
-        {% endif %}
-        {% block content %}{% endblock %}</div>
+      {% endblock %}      
+      <div class="col-sm-10"  id="contentpage">
+        {% block content %}{% endblock %}
+      </div>
     </div>
   </div>
+
+
+
 </body>
 </html>

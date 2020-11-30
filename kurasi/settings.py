@@ -13,9 +13,9 @@ import os
 from pathlib import Path
 
 from neomodel import config
-#config.DATABASE_URL = 'neo4j://proglan:kelas2020@103.89.6.76:7778' #PROGLAN
-#config.DATABASE_URL = 'neo4j://testing:testing@54.90.85.230:7687' #TESTING
-config.DATABASE_URL = 'bolt://neo4j:admin@localhost:7687'
+config.DATABASE_URL = 'neo4j://proglan:kelas2020@103.89.6.76:7778' #PROGLAN
+# config.DATABASE_URL = 'neo4j://testing:testing@54.90.85.230:7687' #TESTING
+# config.DATABASE_URL = 'bolt://neo4j:admin@localhost:7687'
 config.MAX_POOL_SIZE = 50
 NEOMODEL_SIGNALS = True
 NEOMODEL_FORCE_TIMEZONE = False

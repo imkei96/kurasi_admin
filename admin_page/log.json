@@ -65,6 +65,12 @@
             "timestamp": "2020-11-26T10:30:58.619248",
             "uid": "a2b23b5d6a784eb884ddcaaf2ca18f50",
             "action": "Accept"
+        },
+        {
+            "kurator": "jackjos",
+            "timestamp": "2020-11-30T07:43:27.396480",
+            "uid": "f9b997a4860e4fe09068e6d717ec3df8",
+            "action": "Accept"
         }
     ]
 }

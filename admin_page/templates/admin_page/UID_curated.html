@@ -32,6 +32,12 @@
     {% for x in link %}
           {{ x.link|join:" , " }}
         {% endfor %}</p>     
-  <p><a href="{% url 'data_curated' %}">Back</a></p>
+
+  <ul class="nav flex-row nav-pills" >
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href="{% url 'data_curated' %}">Back</a>
+    </li>
+  </ul>        
+  <!-- <p><a href="{% url 'data_curated' %}">Back</a></p> -->
 
 {% endblock %}
