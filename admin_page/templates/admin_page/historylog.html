@@ -14,7 +14,15 @@
       </li>
       {% endfor %}
     </ol>
-    
+    {% if log.paginator.num_pages > 1 %}
+      {% if log.has_previous %}
+        <a href="?page={{ log.previous_page_number }}">previous</a>
+      {% endif %}
+      <span>Page {{ log.number }} of {{ log.paginator.num_pages }}</span>
+      {% if log.has_next %}
+        <a href="?page={{ log.next_page_number }}">next</a>
+      {% endif %}
+    {% endif %}    
   </div>
   
 

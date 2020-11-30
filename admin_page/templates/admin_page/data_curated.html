@@ -18,7 +18,16 @@
     <br>
     {% endfor %}
   </ol>
-
+      {% if uid_list.paginator.num_pages > 1 %}
+        {% if uid_list.has_previous %}
+          <a href="?page={{ uid_list.previous_page_number }}">previous</a>
+        {% endif %}
+        <span>Page {{ uid_list.number }} of {{ uid_list.paginator.num_pages }}</span>
+        {% if uid_list.has_next %}
+          <a href="?page={{ uid_list.next_page_number }}">next</a>
+        {% endif %}
+      {% endif %}
+            
   {% else %}
     <p>There are no data in the database.</p>
   {% endif %}

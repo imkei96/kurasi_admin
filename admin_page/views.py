@@ -5,6 +5,7 @@ from django.views import generic
 from neomodel import config
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 from .utils import change_parents, writetolog, readlog, update_database
 from .models import DBM, ID, Nama, Email, Judul, Kelas, Pelajaran, Kategori, Link
@@ -52,12 +53,20 @@ def get_list(request):
     db_list = DBM.nodes.all()
     db = DBM.nodes.get(site="NonCurated")
     uid_list = db.uid.all()
+    
+    paginator = Paginator(uid_list, 5)
+    page = request.GET.get('page')
+    uid_list = paginator.get_page(page)
 
     context = {
         'dbm_List': db_list,
         'uid_list': uid_list,
     }
     get_base_context(context)
+
+    # print("UID list page done:")
+    # print(uid_list)    
+
     return render(request, 'admin_page/data.html', context=context)
 
 @login_required
@@ -128,12 +137,26 @@ def curated_list(request):
     db_list = DBM.nodes.all()
     db = DBM.nodes.get(site="Curated")
     uid_list = db.uid.all()
+    # print("DB list: ")
+    # print(db_list)
+    # print("UID list:")
+    # print(uid_list)
+
+
+    paginator = Paginator(uid_list, 5)
+    page = request.GET.get('page')
+    uid_list = paginator.get_page(page)
+
 
     context = {
         'dbm_List': db_list,
         'uid_list': uid_list,
     }
+    # print("UID list page done:")
+    # print(uid_list)
+
     get_base_context(context)
+
     return render(request, 'admin_page/data_curated.html', context=context)
 
 @login_required
@@ -172,8 +195,14 @@ def accept(request, user, uid):
 
 @login_required
 def historylog(request):
+
+    log = readlog()
+    paginator = Paginator( log, 5)
+    page = request.GET.get('page')
+    log = paginator.get_page(page)
+    
     context = {
-        'log' : readlog()
+        'log' : log
     }
     get_base_context(context)
     # log = readlog()
