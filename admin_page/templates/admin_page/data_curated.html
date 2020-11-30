@@ -19,13 +19,31 @@
     {% endfor %}
   </ol>
       {% if uid_list.paginator.num_pages > 1 %}
+      <div class="pagination">
         {% if uid_list.has_previous %}
-          <a href="?page={{ uid_list.previous_page_number }}">previous</a>
+        <a class="pagination-action" href="?page=1">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i> </a>
+        <a class="pagination-action" href="?page={{ uid_list.previous_page_number }}">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </a>
         {% endif %}
-        <span>Page {{ uid_list.number }} of {{ uid_list.paginator.num_pages }}</span>
+        {% for num in uid_list.paginator.page_range %}
+            {% if uid_list.number == num %}
+                <span class="pagination-number pagination-current">{{ num }}</span>
+            {% elif num > uid_list.number|add:'-3' and num < uid_list.number|add:'3' %}
+                <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
         {% if uid_list.has_next %}
-          <a href="?page={{ uid_list.next_page_number }}">next</a>
+            <a class="pagination-action" href="?page={{ uid_list.next_page_number }}">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </a>
+            <a class="pagination-action" href="?page={{ uid_list.paginator.num_pages }}">
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            </a>
         {% endif %}
+      </div>
+      
       {% endif %}
             
   {% else %}

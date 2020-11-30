@@ -6,9 +6,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <link rel="stylesheet" type="text/css" href="{% static "vendor/bootstrap/bootstrap.css" %} ">
-  <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
-
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/bootstrap.css' %} ">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'blog/css/pagination_blue.css' %}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
   <div class="jumbotron text-center" id="header">
@@ -67,8 +68,10 @@
       </div>
     </div>
   </div>
-
-
+  <div class="footer-copyright text-center py-3">
+    &#169; 2020 Copyright:
+    <a> EL54203</a>
+  </div>
 
 </body>
 </html>
