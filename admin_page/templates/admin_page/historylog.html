@@ -20,21 +20,25 @@
       {% if log.has_previous %}
       <a class="pagination-action" href="?page=1">
           <i class="fa fa-angle-double-left" aria-hidden="true"></i> </a>
+          &emsp;
       <a class="pagination-action" href="?page={{ log.previous_page_number }}">
           <i class="fa fa-angle-left" aria-hidden="true"></i>
       </a>
+      &emsp;
       {% endif %}
       {% for num in log.paginator.page_range %}
           {% if log.number == num %}
-              <span class="pagination-number pagination-current">{{ num }}</span>
+              <span class="pagination-number pagination-current">{{ num }}</span>&emsp;
           {% elif num > log.number|add:'-3' and num < log.number|add:'3' %}
-              <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>
+              <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>&emsp;
           {% endif %}
       {% endfor %}
       {% if log.has_next %}
+          
           <a class="pagination-action" href="?page={{ log.next_page_number }}">
               <i class="fa fa-angle-right" aria-hidden="true"></i>
           </a>
+          &emsp;
           <a class="pagination-action" href="?page={{ log.paginator.num_pages }}">
               <i class="fa fa-angle-double-right" aria-hidden="true"></i>
           </a>
