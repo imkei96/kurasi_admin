@@ -19,8 +19,6 @@ def get_base_context(context):
 
 # Create your views here.
 def index(request):
-    """View function for home page of site."""
-
     # Generate counts of some of the main objects
     num_data = len(DBM.nodes.all())
     num_uid = len(ID.nodes.all())
@@ -45,7 +43,6 @@ def index(request):
     }
     get_base_context(context)
 
-    # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
 
 @login_required
